@@ -1,0 +1,27 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package
+        run: npm run package
+      - name: Test
+        run: npm test
+      - name: Verify checksums
+        run: cd dist && sha256sum -c SHA256SUMS.txt
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: .github/release-notes-v1.0.0.md
+          files: |
+            dist/moe-run-readiness-1.0.0.ipollowork-plugin
+            dist/moe-run-readiness-1.0.0-skill.zip
+            dist/moe-run-readiness-1.0.0-source.zip
+            dist/SHA256SUMS.txt

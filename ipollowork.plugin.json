@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 2,
+  "id": "moe-run-readiness",
+  "name": "MoE Run Readiness",
+  "description": "Review mixture-of-experts training plans for topology consistency, evidence gaps, and staged allocation gates.",
+  "source": {
+    "format": "ipollowork-extension-manifest",
+    "origin": "local",
+    "trusted": false
+  },
+  "package": {
+    "version": "1.0.0",
+    "publisher": {
+      "id": "lemonlavender",
+      "name": "lemonlavender"
+    },
+    "updateId": "lemonlavender/moe-run-readiness",
+    "compatibility": {
+      "ipollowork": ">=0.50.12"
+    }
+  },
+  "resources": [
+    {
+      "type": "skill",
+      "id": "moe-run-readiness",
+      "label": "MoE Run Readiness",
+      "path": "skills/moe-run-readiness",
+      "required": true
+    }
+  ]
+}
